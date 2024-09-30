@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:personal_finance_tracker_app/screens/add_expense_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -37,7 +38,8 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  const Text('Expense Categories', style: TextStyle(fontSize: 18)),
+                  const Text('Expense Categories',
+                      style: TextStyle(fontSize: 18)),
                   const SizedBox(height: 20),
                   Expanded(child: _buildPieChart()),
                 ],
@@ -52,7 +54,7 @@ class HomeScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50),
               ),
-              child:   const Text('View All Expenses'),
+              child: const Text('View All Expenses'),
             ),
           ],
         ),
@@ -62,6 +64,10 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Handle Add Expense
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AddExpenseScreen()));
         },
         backgroundColor: Colors.blue,
         child: const Icon(Icons.add),
@@ -99,7 +105,8 @@ class HomeScreen extends StatelessWidget {
             Text(title, style: const TextStyle(fontSize: 16)),
             const SizedBox(height: 10),
             Text(amount,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           ],
         ),
       ),

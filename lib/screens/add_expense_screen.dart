@@ -1,18 +1,9 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
-import 'package:personal_finance_tracker_app/provider/expense_provider.dart';
-import 'package:provider/provider.dart';
 
 class AddExpenseScreen extends StatelessWidget {
-  final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-  final List<String> categories = [
-    'Food',
-    'Transport',
-    'Entertainment',
-    'Other'
-  ];
-
-  AddExpenseScreen({super.key});
+  const AddExpenseScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,46 +15,43 @@ class AddExpenseScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(
-              controller: _amountController,
+            const TextField(
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Amount',
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _descriptionController,
-              decoration: const InputDecoration(
-                labelText: 'Description',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            DropdownButtonFormField(
-              items: categories.map((String category) {
-                return DropdownMenuItem(value: category, child: Text(category));
-              }).toList(),
-              onChanged: (value) {},
+            const SizedBox(height: 20),
+            DropdownButtonFormField<String>(
               decoration: const InputDecoration(
                 labelText: 'Category',
                 border: OutlineInputBorder(),
               ),
+              items: const [
+                DropdownMenuItem(value: 'Food', child: Text('Food')),
+                DropdownMenuItem(value: 'Transport', child: Text('Transport')),
+                DropdownMenuItem(value: 'Shopping', child: Text('Shopping')),
+                DropdownMenuItem(value: 'Other', child: Text('Other')),
+              ],
+              onChanged: (value) {},
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Description',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                final expense = Expense(
-                  amount: double.parse(_amountController.text),
-                  description: _descriptionController.text,
-                  category: categories[0],
-                );
-                Provider.of<ExpenseProvider>(context, listen: false)
-                    .addExpense(expense);
-                Navigator.pop(context);
+                // Handle save expense
               },
-              child: const Text('Add Expense'),
+              child: const Text('Save Expense'),
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(double.infinity, 50),
+              ),
             ),
           ],
         ),
