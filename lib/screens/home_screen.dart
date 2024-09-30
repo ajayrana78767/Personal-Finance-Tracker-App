@@ -97,7 +97,6 @@ class HomeScreen extends StatelessWidget {
       elevation: 4,
       child: Container(
         width: 110,
-        height: 80,
         padding: const EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
