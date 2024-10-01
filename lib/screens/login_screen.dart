@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:personal_finance_tracker_app/screens/home_screen.dart';
 import 'package:personal_finance_tracker_app/screens/main_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -38,7 +37,7 @@ class LoginScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>  MainScreen()));
+                        builder: (context) =>  const MainScreen()));
                 // Handle login
               },
               style: ElevatedButton.styleFrom(

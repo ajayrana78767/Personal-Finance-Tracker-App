@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_finance_tracker_app/screens/charts_screen.dart';
@@ -7,6 +9,8 @@ import 'package:personal_finance_tracker_app/screens/add_expense_screen.dart';
 import 'package:personal_finance_tracker_app/screens/view_expenses_screen.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -55,9 +59,9 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
             MaterialPageRoute(builder: (context) => const AddExpenseScreen()),
           );
         },
-        child: const Icon(Icons.add, size: 30),
         backgroundColor: Colors.blue,
         shape: const CircleBorder(),
+        child: const Icon(Icons.add, size: 30),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
